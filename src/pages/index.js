@@ -23,7 +23,7 @@ const Home = () => {
       <header>
         <h1>AceIt</h1>
         <p>Your Monthly Productivity Tracker</p>
-        <nav style={{ display: 'flex', gap: '10px' }}>
+        <nav style={{ display: 'flex', gap: '10px', text-align: center }}>
           <Link href="/">Home</Link>
           <Link href="/services">Planner</Link>
           <Link href="/tracker">Tracker</Link>
