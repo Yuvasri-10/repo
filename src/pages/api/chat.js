@@ -19,7 +19,9 @@ export default async function handler(req, res) {
 
     res.status(200).json({ result: completion.choices[0].message.content });
   } catch (err) {
-    console.error('OpenAI API Error:', err);
-    res.status(500).json({ result: 'Something went wrong with OpenAI API.' });
+    console.error('OpenAI API Error:', err.response?.data || err.message || err);
+    res.status(500).json({
+      result: 'OpenAI Error: ' + (err.response?.data?.error?.message || err.message || 'Unknown error'),
+    });
   }
 }
