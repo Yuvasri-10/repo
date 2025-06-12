@@ -1,9 +1,3 @@
-import { OpenAI } from 'openai';
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
@@ -12,16 +6,36 @@ export default async function handler(req, res) {
   const { prompt } = req.body;
 
   try {
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
-      messages: [{ role: 'user', content: prompt }],
-    });
+    const response = await fetch(
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=' + process.env.GEMINI_API_KEY,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: prompt,
+                },
+              ],
+            },
+          ],
+        }),
+      }
+    );
 
-    res.status(200).json({ result: completion.choices[0].message.content });
+    const data = await response.json();
+
+    const output = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response';
+
+    res.status(200).json({ result: output });
   } catch (err) {
-    console.error('OpenAI API Error:', err.response?.data || err.message || err);
+    console.error('Gemini API Error:', err);
     res.status(500).json({
-      result: 'OpenAI Error: ' + (err.response?.data?.error?.message || err.message || 'Unknown error'),
+      result: 'Gemini Error: ' + (err.message || 'Unknown error'),
     });
   }
 }
