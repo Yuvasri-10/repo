@@ -23,13 +23,14 @@ const Home = () => {
       <header>
         <h1>AceIt</h1>
         <p>Your Monthly Productivity Tracker</p>
-        <nav style={{ display: 'flex', gap: '10px', textAlign: 'center' }}>
-          <Link href="/">Home</Link>
-          <Link href="/services">Planner</Link>
-          <Link href="/tracker">Tracker</Link>
-          <Link href="/about">About Us</Link>
-          <Link href="/contact">Contact Us</Link>
+        <nav style={{ display: 'flex', gap: '10px', justifyContent: 'center', textAlign: 'center' }}>
+           <Link href="/">Home</Link>
+           <Link href="/services">Planner</Link>
+           <Link href="/tracker">Tracker</Link>
+           <Link href="/about">About Us</Link>
+           <Link href="/contact">Contact Us</Link>
         </nav>
+
       </header>
 
       <section className="welcome-section" style={{ padding: '2rem' }}>
