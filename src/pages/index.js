@@ -20,10 +20,10 @@ const Home = () => {
 
   return (
     <div style={{ fontFamily: 'Segoe UI' }}>
-      <header style={{ backgroundColor: '#ffe6eb', padding: '1rem', borderBottom: '1px solid #ff96ad' }}>
+      <header>
         <h1>AceIt</h1>
         <p>Your Monthly Productivity Tracker</p>
-        <nav style={{ display: 'flex', gap: '15px' }}>
+        <nav style={{ display: 'flex', gap: '10px' }}>
           <Link href="/">Home</Link>
           <Link href="/services">Planner</Link>
           <Link href="/tracker">Tracker</Link>
@@ -41,28 +41,28 @@ const Home = () => {
         </p>
       </section>
 
-     
-      <section className="ai-chat-section" style={{ padding: '2rem', backgroundColor: '#fff0f5' }}>
-        <h2>🤖 Ask AceIt AI</h2>
+      
+      <section className="ai-chatbox" style={{ padding: '2rem', backgroundColor: '#ffe6eb', borderRadius: '15px', margin: '2rem' }}>
+        <h2 style={{ color: '#ff6f87' }}>Talk to AceIt AI</h2>
         <textarea
           rows={4}
-          style={{ width: '100%', padding: '10px', borderRadius: '8px' }}
+          style={{ width: '100%', padding: '10px', borderRadius: '10px' }}
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Ask something like: Give me a productivity tip"
+          placeholder="Ask AceIt AI anything..."
         />
         <button
           onClick={handleSubmit}
-          style={{ marginTop: '10px', padding: '10px 20px', borderRadius: '10px', backgroundColor: '#ff96ad', border: 'none', color: '#fff' }}
+          style={{ marginTop: '10px', padding: '10px 20px', borderRadius: '10px', backgroundColor: '#ff96ad', border: 'none', color: '#fff', cursor: 'pointer' }}
         >
-          {loading ? 'Thinking...' : 'Ask AI'}
+          {loading ? 'Thinking...' : 'Submit'}
         </button>
-        <div style={{ marginTop: '20px', background: '#ffe6eb', padding: '20px', borderRadius: '10px', whiteSpace: 'pre-wrap' }}>
+        <div style={{ marginTop: '1rem', background: '#fff', padding: '1rem', borderRadius: '10px', whiteSpace: 'pre-wrap' }}>
           {response}
         </div>
       </section>
 
-      <footer style={{ backgroundColor: '#ffe6eb', padding: '1rem', textAlign: 'center' }}>
+      <footer>
         <p>&copy; 2025 AceIt &nbsp;|&nbsp; Stay productive!</p>
       </footer>
     </div>
