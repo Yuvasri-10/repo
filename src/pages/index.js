@@ -23,7 +23,8 @@ const Home = () => {
       <header>
         <h1>AceIt</h1>
         <p>Your Monthly Productivity Tracker</p>
-        <nav style={{ display: 'flex', gap: '10px', textAlign: center }}>
+        <nav style={{ display: 'flex', gap: '10px', textAlign: 'center' }}>
+
           <Link href="/">Home</Link>
           <Link href="/services">Planner</Link>
           <Link href="/tracker">Tracker</Link>
@@ -41,7 +42,7 @@ const Home = () => {
         </p>
       </section>
 
-      
+   
       <section className="ai-chatbox" style={{ padding: '2rem', backgroundColor: '#ffe6eb', borderRadius: '15px', margin: '2rem' }}>
         <h2 style={{ color: '#ff6f87' }}>Talk to AceIt AI</h2>
         <textarea
